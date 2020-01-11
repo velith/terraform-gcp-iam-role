@@ -5,14 +5,21 @@ A terraform module for creating custom GCP roles and assigning multiple users to
 ## Example usage
 
 ```
-module "development" {
-  source = "/modules/custom-role"
+module "role-name" {
+  source = "git@github.com:ingka-group-digital/terraform-gcp-custom-role.git"
 
-  id = "development"
-  project = var.project
-  title = "Developer Account"
-  description = "Generic developer role that will allow view access for most resources"
-  permissions = var.developers.permissions
-  users = var.developers.users
+  id = "role-id"
+  project = "your-project-id"
+  title = "Role Title"
+  description = "Description of the role"
+  permissions = [
+    "pubsub.snapshots.get",
+    "pubsub.snapshots.getIamPolicy",
+    "pubsub.snapshots.list",
+    "pubsub.snapshots.seek",
+  ]
+  users = {
+    "carl"="carl.sutton@ingka.ikea.com",
+    }
 }
 ```
