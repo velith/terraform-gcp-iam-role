@@ -6,7 +6,7 @@ A terraform module for creating custom GCP roles and assigning multiple users to
 
 ```
 module "role-name" {
-  source = "git@github.com:ingka-group-digital/terraform-gcp-custom-role.git"
+  source = "github.com/velith/terraform-gcp-custom-role"
 
   id = "role-id"
   project = "your-project-id"
@@ -19,7 +19,7 @@ module "role-name" {
     "pubsub.snapshots.seek",
   ]
   users = {
-    "carl"="carl.sutton@ingka.ikea.com",
+    "me"="first.lastname@example.com",
     }
 }
 ```
